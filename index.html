@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow Icon Download Service</title>
+</head>
+
+<body>
+    <button class="addFile" onclick="addFile()">
+        Add File
+    </button>
+
+    <ul class="listFile">
+    </ul>
+
+    <script>
+        function addFile() {
+            // open file dialog
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.geode';
+            input.click();
+
+            // Add file name to list with href link to google.com
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const fileName = file.name;
+                const listFile = document.querySelector('.listFile');
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `https://www.google.com/search?q=${fileName}`;
+                a.target = '_blank';
+                a.textContent = fileName;
+                li.appendChild(a);
+                listFile.appendChild(li);
+            }
+
+        }
+    </script>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #221818;
+        }
+
+        .addFile {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</body>
+
+</html>
